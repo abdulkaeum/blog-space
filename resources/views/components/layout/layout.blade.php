@@ -14,14 +14,27 @@
 </head>
 
 <body style="font-family: Open Sans, sans-serif">
-    <section class="px-6 py-8">
 
-        <x-layout.nav/>
+    @include('_partials._flash')
 
-        <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-            {{ $slot }}
-        </main>
+    @if(request()->routeIs('login.create') || request()->routeIs('register.create'))
+        {{ $slot }}
+    @else
+        <section class="px-6 py-8">
+            <x-layout.nav/>
 
-        <x-layout.footer/>
-    </section>
+            <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+                {{ $slot }}
+            </main>
+
+            <x-layout.footer/>
+        </section>
+    @endif
+
+    <!-- AlpineJS -->
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+        <!-- Font Awesome -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+                integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
 </body>

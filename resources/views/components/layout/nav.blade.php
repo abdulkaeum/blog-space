@@ -40,19 +40,19 @@
 
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
             <div class="items-center md:flex">
-                <div class="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
-                    <a class="my-1 text-sm leading-5 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-indigo-400 hover:underline md:mx-4 md:my-0"
-                       href="/">Home</a>
-                </div>
+                @auth
+                    @include('_partials._user_menu')
+                @else
+                    <div class="flex items-center py-2 -mx-1 md:mx-0">
+                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-gray-500 rounded-md hover:bg-blue-600 md:mx-2 md:w-auto"
+                           href="{{ route('login.create') }}">Login</a>
+                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 md:mx-0 md:w-auto"
+                           href="{{ route('register.create') }}">Sign Up</a>
+                    </div>
+            @endauth
 
-                <div class="flex items-center py-2 -mx-1 md:mx-0">
-                    <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-gray-500 rounded-md hover:bg-blue-600 md:mx-2 md:w-auto"
-                       href="#">Login</a>
-                    <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 md:mx-0 md:w-auto"
-                       href="#">Join free</a>
-                </div>
 
-                <!-- Search input on mobile screen -->
+            <!-- Search input on mobile screen -->
                 <div class="mt-3 md:hidden">
                     <div class="relative">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
