@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\PostController;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

@@ -7,6 +7,8 @@
                 @if(Request::route()->getName() == 'posts.tag')
                     : {{ ucwords(Route::current()->parameter('tag')->name) }}
                 @endif
+
+                {{ isset($searchString) ? ': '.$searchString : '' }}
             </x-layout.heading-h2>
 
             <x-posts.grid :posts="$posts"/>

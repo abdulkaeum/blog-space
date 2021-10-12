@@ -23,12 +23,9 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        //session()->flashInput($request->input());
-        $request->flash();
-        $request->flashOnly('search');
-
         return view('posts.index', [
-            'posts' => $this->getPosts()
+            'posts' => $this->getPosts(),
+            'searchString' => $request->input('search')
         ]);
     }
 

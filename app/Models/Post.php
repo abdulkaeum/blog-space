@@ -14,6 +14,11 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function scopeFilter($query, array $filter)
     {
         $query->when($filter['search'] ?? false, fn($query, $search) =>

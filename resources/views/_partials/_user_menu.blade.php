@@ -16,19 +16,8 @@
     <!-- Dropdown menu -->
     <div x-show="isOpen" @click.away="isOpen = false"
          class="absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800">
-        <a href="#"
-           class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-            <img class="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
-                 src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200"
-                 alt="jane avatar">
-            <div class="mx-1">
-                <h1 class="text-sm font-semibold text-gray-700 dark:text-gray-200">
-                    {{ auth()->user()->name }}
-                </h1>
-            </div>
-        </a>
 
-        <hr class="border-gray-200 dark:border-gray-700 ">
+        <x-layout.hr/>
 
         <a href="#"
            class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -43,8 +32,8 @@
             </svg>
 
             <span class="mx-1">
-                        view profile
-                    </span>
+                #view profile
+            </span>
         </a>
 
         <a href="#"
@@ -57,8 +46,8 @@
             </svg>
 
             <span class="mx-1">
-                        Settings
-                    </span>
+                #Settings
+            </span>
         </a>
 
         <a href="#"
@@ -71,11 +60,11 @@
             </svg>
 
             <span class="mx-1">
-                        Keyboard shortcuts
-                    </span>
+                #Keyboard shortcuts
+            </span>
         </a>
 
-        <hr class="border-gray-200 dark:border-gray-700 ">
+        <x-layout.hr/>
 
         <a href="#"
            class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -87,8 +76,8 @@
             </svg>
 
             <span class="mx-1">
-                        Company profile
-                    </span>
+                #Company profile
+            </span>
         </a>
 
         <a href="#"
@@ -109,7 +98,9 @@
                     fill="currentColor"></path>
             </svg>
 
-            <span class="mx-1">Team</span>
+            <span class="mx-1">
+                #Team
+            </span>
         </a>
 
         <a href="#"
@@ -122,11 +113,11 @@
             </svg>
 
             <span class="mx-1">
-                        Invite colleagues
-                    </span>
+                #Invite colleagues
+            </span>
         </a>
 
-        <hr class="border-gray-200 dark:border-gray-700 ">
+        <x-layout.hr/>
 
         <a href="#"
            class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -138,9 +129,10 @@
             </svg>
 
             <span class="mx-1">
-                        Help
-                    </span>
+                #Help
+            </span>
         </a>
+
         <a href="#" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();"
            class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
             <svg class="w-5 h-5 mx-1" viewBox="0 0 24 24" fill="none"
