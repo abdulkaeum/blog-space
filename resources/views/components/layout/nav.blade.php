@@ -3,11 +3,19 @@
         <div class="flex flex-col md:flex-row md:justify-between md:items-center">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <a class="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-                       href="#">Brand</a>
+                    <div class="flex">
+                        <a href="/">
+                            <img
+                                src="{{ asset('images/logo.png') }}"
+                                alt="Logo"
+                                class="object-scale-down rounded"
+                                style="max-width: 50%"
+                            >
+                        </a>
+                    </div>
 
                     <!-- Search input on desktop screen -->
-                    <div class="hidden mx-10 md:block">
+                    <div class="hidden mx-30 md:block">
                         <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                                     <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
@@ -18,9 +26,17 @@
                                     </svg>
                                 </span>
 
-                            <input type="text"
-                                   class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                                   placeholder="Search">
+                            <form action="{{ route('post.search') }}" method="POST">
+                                @csrf
+                                <label for="search">
+                                    <input type="text"
+                                           name="search"
+                                           id="search"
+                                           value="{{ old('search') }}"
+                                           class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                                           placeholder="Search">
+                                </label>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -41,9 +57,15 @@
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
             <div class="items-center md:flex">
                 @auth
+                    <div class="flex items-center -mx-1 md:mx-0">
+                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-gray transition-colors duration-200 transform bg-blue-100 rounded-md hover:bg-blue-200 md:mx-2 md:w-auto"
+                           href="{{ route('home') }}">Home</a>
+                    </div>
                     @include('_partials._user_menu')
                 @else
                     <div class="flex items-center py-2 -mx-1 md:mx-0">
+                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-gray transition-colors duration-200 transform bg-blue-100 rounded-md hover:bg-blue-200 md:mx-2 md:w-auto"
+                           href="{{ route('home') }}">Home</a>
                         <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-gray-500 rounded-md hover:bg-blue-600 md:mx-2 md:w-auto"
                            href="{{ route('login.create') }}">Login</a>
                         <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 md:mx-0 md:w-auto"
@@ -64,23 +86,28 @@
                                 </svg>
                             </span>
 
-                        <input type="text"
-                               class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                               placeholder="Search">
+                        <form action="{{ route('post.search') }}" method="POST">
+                            @csrf
+                            <label for="search">
+                                <input type="text"
+                                       name="search"
+                                       id="search"
+                                       value="{{ old('search') }}"
+                                       class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                                       placeholder="Search">
+                            </label>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
-            <a class="mx-4 text-sm leading-5 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-indigo-400 hover:underline md:my-0"
-               href="#">Tag 1</a>
-            <a class="mx-4 text-sm leading-5 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-indigo-400 hover:underline md:my-0"
-               href="#">Tag 2</a>
-            <a class="mx-4 text-sm leading-5 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-indigo-400 hover:underline md:my-0"
-               href="#">Tag 3</a>
-            <a class="mx-4 text-sm leading-5 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-indigo-400 hover:underline md:my-0"
-               href="#">Tag 4</a>
+            @foreach(\App\Models\Tag::all() as $tag)
+                <x-layout.link :href="route('posts.tag', $tag->name)" color="gray">
+                    {{ ucwords($tag->name) }}
+                </x-layout.link>
+            @endforeach
         </div>
     </div>
 </nav>
