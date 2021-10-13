@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TagController;
@@ -31,4 +32,5 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function (){
     Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
+    Route::post('post/{post}/comment', [CommentController::class, 'store'])->name('post.comment');
 });

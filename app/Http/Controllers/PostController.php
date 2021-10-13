@@ -17,7 +17,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts.show', [
-            'post' => $post->load('tags')
+            'post' => $post->load(['tags'])
         ]);
     }
 
@@ -33,7 +33,7 @@ class PostController extends Controller
     {
         return Post::latest()
             ->filter(request(['search']))
-            ->with('tags')
+            ->with(['tags','author'])
             ->paginate(10);
     }
 }
