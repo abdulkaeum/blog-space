@@ -41,7 +41,7 @@
             </div>
 
             <section class="col-span-8 col-start-5 mt-10 space-y-6 border-r pr-3">
-                @include('posts._post-comment')
+                @include('posts._comment.store')
                 @include('posts._comments')
             </section>
 

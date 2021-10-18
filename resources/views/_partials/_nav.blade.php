@@ -103,7 +103,7 @@
         </div>
 
         <div class="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
-            @foreach(\App\Models\Tag::all() as $tag)
+            @foreach(\App\Models\Tag::all()->sortBy('name') as $tag)
                 <x-layout.link :href="route('posts.tag', $tag->name)" color="gray">
                     {{ ucwords($tag->name) }}
                 </x-layout.link>

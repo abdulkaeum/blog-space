@@ -9,9 +9,11 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'excerpt', 'body', 'slug', 'image'];
+
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
     public function author()

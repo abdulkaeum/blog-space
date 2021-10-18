@@ -23,7 +23,7 @@
         <section class="px-6 py-8">
             @include('_partials._nav')
 
-            <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+            <main class="max-w-6xl mx-auto mt-2 lg:mt-2 space-y-6">
                 {{ $slot }}
             </main>
 
