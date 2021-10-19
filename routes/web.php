@@ -38,12 +38,14 @@ Route::middleware('auth')->group(function (){
 
     Route::post('post/{post}/comment', [CommentController::class, 'store'])->name('comment.store');
 
-    Route::get('settings/posts', [SettingsController::class, 'index'])->name('settings.index');
-    Route::get('settings/post/create', [SettingsController::class, 'create'])->name('settings.post.create');
-    Route::post('settings/post/', [SettingsController::class, 'store'])->name('settings.post.store');
-    Route::get('settings/{post:slug}/edit', [SettingsController::class, 'edit'])->name('settings.post.edit');
-    Route::patch('settings/{post:slug}', [SettingsController::class, 'update'])->name('settings.post.update');
-    Route::delete('settings/{post:slug}', [SettingsController::class, 'destroy'])->name('settings.post.destroy');
+    Route::middleware('can:admin')->group(function (){
+        Route::get('settings/posts', [SettingsController::class, 'index'])->name('settings.index');
+        Route::get('settings/post/create', [SettingsController::class, 'create'])->name('settings.post.create');
+        Route::post('settings/post/', [SettingsController::class, 'store'])->name('settings.post.store');
+        Route::get('settings/{post:slug}/edit', [SettingsController::class, 'edit'])->name('settings.post.edit');
+        Route::patch('settings/{post:slug}', [SettingsController::class, 'update'])->name('settings.post.update');
+        Route::delete('settings/{post:slug}', [SettingsController::class, 'destroy'])->name('settings.post.destroy');
 
-    Route::post('settings/tag', [TagController::class, 'create'])->name('settings.tag.create');
+        Route::post('settings/tag', [TagController::class, 'create'])->name('settings.tag.create');
+    });
 });

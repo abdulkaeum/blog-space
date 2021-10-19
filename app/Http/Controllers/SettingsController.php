@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -52,6 +53,10 @@ class SettingsController extends Controller
 
     public function edit(Post $post)
     {
+        if(! Gate::allows('edit-post', $post)){
+            abort(403);
+        }
+
         return view('settings.edit', [
             'post' => $post,
             'tags' => $this->getTags(),
