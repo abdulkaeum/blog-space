@@ -31,6 +31,11 @@ class Post extends Model
         $query->when($filter['search'] ?? false, fn($query, $search) =>
             $query->where('title', 'like' , '%'. $search .'%')
                 ->orWhere('body', 'like' , '%'. $search .'%')
+                ->orWhereHas('author', fn($query) =>
+                    $query->where('name', 'like', '%'. $search .'%'))
+                ->orWhereHas('tags', fn($query) =>
+                    $query->where('name', 'like', '%'. $search.'%')
+            )
         );
     }
 }
