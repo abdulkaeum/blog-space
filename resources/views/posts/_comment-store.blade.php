@@ -12,7 +12,7 @@
         </div>
 
         <x-forms.textarea
-            name="comment"
+            name="body"
             placeholder="Add a comment"
             required
         ></x-forms.textarea>

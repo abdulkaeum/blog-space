@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BestCommentController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
@@ -37,6 +38,8 @@ Route::middleware('auth')->group(function (){
     Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
 
     Route::post('post/{post}/comment', [CommentController::class, 'store'])->name('comment.store');
+
+    Route::post('best-comment/{comment}', [BestCommentController::class, 'store'])->name('best-comment');
 
     Route::middleware('can:admin')->group(function (){
         Route::get('settings/posts', [SettingsController::class, 'index'])->name('settings.index');

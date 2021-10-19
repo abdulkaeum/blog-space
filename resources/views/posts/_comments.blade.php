@@ -8,11 +8,14 @@
                     width="35"
                     height="35"
                     class="rounded-xl">
+                <div class="mt-2">
+                    @include('posts._best_comment')
+                </div>
             </div>
 
             <div>
                 <header class="mb-4">
-                    <h3 class="font-bold">{{ $comment->author->name }}</h3>
+                    <h3 class="font-semibold">{{ $comment->author->name }}</h3>
 
                     <p class="text-xs">
                         <time>{{ $comment->created_at->format('F j, Y, g:i a') }}</time>

@@ -53,10 +53,6 @@ class SettingsController extends Controller
 
     public function edit(Post $post)
     {
-        if(! Gate::allows('edit-post', $post)){
-            abort(403);
-        }
-
         return view('settings.edit', [
             'post' => $post,
             'tags' => $this->getTags(),
