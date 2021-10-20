@@ -1,4 +1,4 @@
-<nav>
+<nav class="sticky inset-0 bg-white">
     <div class="container px-6 py-3 mx-auto">
         <div class="flex flex-col md:flex-row md:justify-between md:items-center">
             <div class="flex items-center justify-between">

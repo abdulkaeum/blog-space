@@ -38,4 +38,9 @@ class Post extends Model
             )
         );
     }
+
+    public function getTitleAttribute($value)
+    {
+        return ucwords($value);
+    }
 }

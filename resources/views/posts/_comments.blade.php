@@ -7,7 +7,7 @@
                     alt=""
                     width="35"
                     height="35"
-                    class="rounded-xl">
+                    class="rounded-full">
                 <div class="mt-2">
                     @include('posts._best_comment')
                 </div>

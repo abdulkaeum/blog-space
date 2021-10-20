@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BestCommentController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostRateController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TagController;
@@ -25,6 +26,7 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('post/{post:slug}', [PostController::class, 'show'])->name('post.show');
 Route::get('posts/{tag:slug}', [TagController::class, 'index'])->name('posts.tag');
 Route::post('search', [PostController::class, 'search'])->name('post.search');
+Route::get('rate-post/{post}/{star}', [PostRateController::class, 'store'])->name('rate-post');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'create'])->name('login.create');

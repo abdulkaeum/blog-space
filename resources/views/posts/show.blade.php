@@ -2,7 +2,7 @@
     <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
         <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
             <div class="col-span-4 lg:text-center lg:pt-14 mb-10 border-r border-t pr-5">
-                <img src="{{ asset('storage/'.$post->image) }}" alt="" class="rounded-xl">
+                <img src="{{ asset('storage/'.$post->image) }}" alt="" class="rounded">
 
                 <p class="mt-4 block text-gray-400 text-xs">
                     Published
@@ -10,13 +10,55 @@
                 </p>
 
                 <div class="flex items-center lg:justify-center text-sm mt-4">
-                    <img src="https://i.pravatar.cc/60?u={{ $post->user_id }}" alt="" class="rounded-xl" width="35"
+                    <img src="https://i.pravatar.cc/60?u={{ $post->user_id }}" alt="" class="rounded" width="35"
                          height="35">
                     <div class="ml-3 text-left">
                         <h5 class="font-bold">
                             <a href="#">{{ $post->author->name }}</a>
                         </h5>
                     </div>
+                </div>
+
+                <div class="mt-10">
+                    <span class="text-xs">Did you love this post?</span>
+                    <ul class="flex justify-center mb-5">
+                        @for($i = 1; $i <= 5; $i++)
+                            <li>
+                                <a href="{{ route('rate-post', ['post' => $post, 'star' => $i]) }}" title="{{ $i }}">
+                                    <i class="fas fa-heart fa-lg text-red-400 hover:text-red-500 mr-2"></i>
+                                </a>
+                            </li>
+                        @endfor
+                    </ul>
+
+                    <span class="text-xs lg:text-left text-left">What others thought</span>
+                    @for($i = 1; $i <= 5; $i++)
+                        <div class="lg:text-left text-left">
+                            @for($x = 1; $x <= $i; $x++)
+                                <i class="fas fa-heart fa-xs text-red-400 mr-2"></i>
+                            @endfor
+                            @php
+                                $row = 'r_'.$i;
+                            @endphp
+                            <span class="text-xs">
+                                {{ $post->$row }}
+                            </span>
+                        </div>
+                    @endfor
+                </div>
+
+                <div class="mt-10 text-left">
+                    <x-layout.heading-h6>Related</x-layout.heading-h6>
+                    @foreach($relatedPosts as $relatedPost)
+                        <div class="mt-3">
+                            <div class="text-left text-sm">{{ $relatedPost->title }}</div>
+                            <div>
+                                <img width="140" height="140" class="rounded"
+                                      src="{{ asset('storage/'.$relatedPost->image) }}" alt="{{ $relatedPost->title }}"
+                                >
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 

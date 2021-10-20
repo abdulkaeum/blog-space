@@ -16,6 +16,10 @@
                            style="font-size: 10px">{{ $tag }}
                         </a>
                     @endforeach
+                        <span
+                           class="px-3 py-1 bg-green-200 rounded-full text-black-500 text-xs uppercase font-semibold"
+                           style="font-size: 10px">{{ $featured->views }} Views
+                        </span>
                 </div>
 
                 <div class="mt-4">

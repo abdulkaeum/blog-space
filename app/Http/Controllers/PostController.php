@@ -16,8 +16,17 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $post->views += 1;
+        $post->save();
+
         return view('posts.show', [
-            'post' => $post->load(['tags'])
+            'post' => $post->load(['tags']),
+            'relatedPosts' => Post::whereHas('tags', fn($query) =>
+                $query->whereIn('tags.id', $post->tags->pluck('id')))
+                    ->where('posts.id', '!=', $post->id)
+                    ->orderByDesc('created_at')
+                    ->take(4)
+                    ->get()
         ]);
     }
 
