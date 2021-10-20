@@ -27,8 +27,9 @@
                 {{ $slot }}
             </main>
 
-            <x-layout.footer/>
+
         </section>
+        <x-layout.footer/>
     @endif
 
     <!-- AlpineJS -->
