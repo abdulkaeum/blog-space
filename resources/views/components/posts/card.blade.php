@@ -1,11 +1,11 @@
 @props(['post'])
 
 <article
-    {{ $attributes(['class' => 'm-2 transition-colors duration-300 hover:bg-gray-200 bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl']) }}>
+    {{ $attributes(['class' => 'm-2 transition-colors duration-300 hover:bg-gray-200 bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded']) }}>
     <div class="py-6 px-5 h-full flex flex-col">
         <div>
             <img src="{{ asset('storage/'.$post->image) }}" alt="Blog Post illustration"
-                 class="rounded-xl">
+                 class="rounded">
         </div>
 
         <div class="mt-6 flex flex-col justify-between flex-1">
@@ -38,9 +38,7 @@
             </header>
 
             <div class="text-sm mt-4">
-                <p>
-                    {{ $post->body }}
-                </p>
+                {!! \Illuminate\Support\Str::substr($post->body, 0, 500) !!}. . .
             </div>
 
             <footer class="flex justify-between items-center mt-8">

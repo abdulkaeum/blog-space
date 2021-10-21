@@ -18,6 +18,7 @@ class NewsletterController extends Controller
         try {
             $newsletter->subscribe($request->input('email'));
         } catch (Exception $e) {
+            session()->flash('error', 'Email could not be added to our newsletter subscription');
             throw ValidationException::withMessages([
                 'email' => 'Email could not be added to our newsletter subscription'
             ]);

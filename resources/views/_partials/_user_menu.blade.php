@@ -1,7 +1,7 @@
 <div x-data="{ isOpen: false }" class="relative inline-block">
     <!-- Dropdown toggle button -->
     <button @click="isOpen = !isOpen"
-            class="relative z-10 flex items-center p-2 rounded-md text-sm text-gray-600 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+            class="relative z-10 flex items-center p-2 rounded text-sm text-gray-600 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
         <span class="mx-1">
             {{ auth()->user()->name }}
         </span>
@@ -15,7 +15,7 @@
 
     <!-- Dropdown menu -->
     <div x-show="isOpen" @click.away="isOpen = false"
-         class="absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800">
+         class="absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded shadow-xl dark:bg-gray-800">
 
         <x-layout.hr/>
 

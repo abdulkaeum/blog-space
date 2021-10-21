@@ -17,7 +17,7 @@
                             <a href="{{ route('settings.post.edit', $post) }}">
                                 <i class="fas fa-pencil-alt"></i>
                                 &nbsp;
-                                {{ $post->title }}
+                                {!! \Illuminate\Support\Str::substr($post->title, 0, 25) !!}...
                             </a>
                         </td>
                         <td class="py-3 px-6">
@@ -43,4 +43,5 @@
             </table>
         </div>
     </div>
+    {{ $posts->links() }}
 </x-settings.layout>

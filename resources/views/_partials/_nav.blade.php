@@ -33,8 +33,8 @@
                                            name="search"
                                            id="search"
                                            value="{{ old('search') }}"
-                                           class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                                           placeholder="Search">
+                                           class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                                           placeholder="Search Blog">
                                 </label>
                             </form>
                         </div>
@@ -58,17 +58,17 @@
             <div class="items-center md:flex">
                 @auth
                     <div class="flex items-center -mx-1 md:mx-0">
-                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-gray transition-colors duration-200 transform bg-blue-100 rounded-md hover:bg-blue-200 md:mx-2 md:w-auto"
+                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-gray transition-colors duration-200 transform bg-blue-100 rounded hover:bg-blue-200 md:mx-2 md:w-auto"
                            href="{{ route('home') }}">Home</a>
                     </div>
                     @include('_partials._user_menu')
                 @else
                     <div class="flex items-center py-2 -mx-1 md:mx-0">
-                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-gray transition-colors duration-200 transform bg-blue-100 rounded-md hover:bg-blue-200 md:mx-2 md:w-auto"
+                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-gray transition-colors duration-200 transform bg-blue-100 rounded hover:bg-blue-200 md:mx-2 md:w-auto"
                            href="{{ route('home') }}">Home</a>
-                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-gray-500 rounded-md hover:bg-blue-600 md:mx-2 md:w-auto"
+                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-gray-500 rounded hover:bg-blue-600 md:mx-2 md:w-auto"
                            href="{{ route('login.create') }}">Login</a>
-                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 md:mx-0 md:w-auto"
+                        <a class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 rounded hover:bg-blue-600 md:mx-0 md:w-auto"
                            href="{{ route('register.create') }}">Sign Up</a>
                     </div>
             @endauth
@@ -93,8 +93,8 @@
                                        name="search"
                                        id="search"
                                        value="{{ old('search') }}"
-                                       class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                                       placeholder="Search">
+                                       class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                                       placeholder="Search Blog">
                             </label>
                         </form>
                     </div>

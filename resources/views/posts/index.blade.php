@@ -12,7 +12,9 @@
             </x-layout.heading-h2>
 
             <x-posts.grid :posts="$posts"/>
-            {{ $posts->links() }}
+            <div class="mt-5">
+                {{ $posts->links() }}
+            </div>
         @else
             <x-messages.info title="Posts" message="No posts found."/>
         @endif

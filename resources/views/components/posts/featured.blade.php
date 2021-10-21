@@ -1,10 +1,10 @@
 @props(['featured'])
 
 <article
-    class="transition-colors duration-300 hover:bg-gray-200 bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
+    class="transition-colors duration-300 hover:bg-gray-200 bg-gray-200 border border-black border-opacity-0 hover:border-opacity-5 rounded">
     <div class="py-6 px-5 lg:flex">
-        <div class="flex-1 lg:mr-8">
-            <img src="{{ asset('storage/'.$featured->image) }}" alt="Blog Post illustration" class="rounded-xl">
+        <div class="flex-1 lg:mr-8 ">
+            <img src="{{ asset('storage/'.$featured->image) }}" alt="Blog Post illustration" class="rounded">
         </div>
 
         <div class="flex-1 flex flex-col justify-between">
@@ -16,9 +16,9 @@
                            style="font-size: 10px">{{ $tag }}
                         </a>
                     @endforeach
-                        <span
-                           class="px-3 py-1 bg-green-200 rounded-full text-black-500 text-xs uppercase font-semibold"
-                           style="font-size: 10px">{{ $featured->views }} Views
+                    <span
+                        class="px-3 py-1 bg-green-200 rounded-full text-black-500 text-xs uppercase font-semibold"
+                        style="font-size: 10px">{{ $featured->views }} Views
                         </span>
                 </div>
 
@@ -36,9 +36,7 @@
             </header>
 
             <div class="text-sm mt-2">
-                <p>
-                    {{ $featured->body }}
-                </p>
+                {!! \Illuminate\Support\Str::substr($featured->body, 0, 500) !!}. . .
             </div>
 
             <footer class="flex justify-between items-center mt-8">

@@ -3,8 +3,13 @@
     <div class="bg-cover w-full h-screen"
          style="background-image: url('./images/login.webp');">
         <div class="content px-8 py-2">
-            <nav class="flex items-center justify-between">
-                <h1 class="text-gray-200 font-bold text-2xl ">Brand</h1>
+            <nav class="flex items-center justify-between mt-10">
+                <img
+                    src="{{ asset('images/logo.png') }}"
+                    alt="Logo"
+                    class="object-scale-down rounded"
+                    style="max-width: 30%; width: 180px"
+                >
                 <div class="auth flex items-center">
                     <a href="{{ route('home') }}"
                        class="bg-transparent text-gray-200  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">
