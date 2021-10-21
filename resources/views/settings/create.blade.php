@@ -13,6 +13,8 @@
         <x-layout.heading-h6>Tags</x-layout.heading-h6>
         <x-forms.input-checkbox name="tags" :options="$tags" />
 
+        <x-forms.input-select name="status" :options="['live','draft']"/>
+
         <x-forms.submit>Publish</x-forms.submit>
     </form>
 </x-settings.layout>

@@ -1,6 +1,6 @@
 @props(['posts'])
 
-<x-posts.featured :featured="$posts[0]"/>
+<x-posts.featured :featured="$posts->first()"/>
 
 @if($posts->count() >= 2)
     <div class="lg:grid lg:grid-cols-6">

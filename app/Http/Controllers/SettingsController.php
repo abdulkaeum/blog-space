@@ -35,6 +35,7 @@ class SettingsController extends Controller
             'body'      => ['required', 'min:5'],
             'thumbnail' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg'],
             'tags'      => ['required', Rule::exists('tags','id')],
+            'status'    => ['required', Rule::in('live','draft')]
         ]);
 
         $attributes['slug'] = Str::slug($attributes['title']);
@@ -69,6 +70,7 @@ class SettingsController extends Controller
             'body'      => ['required', 'min:5'],
             'thumbnail' => ['image', 'mimes:jpg,png,jpeg,gif,svg'],
             'tags'      => ['required', Rule::exists('tags','id')],
+            'status'    => ['required', Rule::in('live','draft')]
         ]);
 
         $attributes['slug'] = Str::slug($attributes['title']);
@@ -77,9 +79,11 @@ class SettingsController extends Controller
 
         $post->tags()->sync($attributes['tags']);
 
-        Storage::disk('public')->delete($post->image);
-        $post->image = $request->file('thumbnail')->store('thumbnail');
-        $post->save();
+        if($request->file('thumbnail')) {
+            Storage::disk('public')->delete($post->image);
+            $post->image = $request->file('thumbnail')?->store('thumbnail');
+            $post->save();
+        }
 
         return redirect()->route('settings.index')->with('success', 'Post updated');
     }

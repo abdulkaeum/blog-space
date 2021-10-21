@@ -5,7 +5,7 @@
     <div class="py-6 px-5 h-full flex flex-col">
         <div>
             <img src="{{ asset('storage/'.$post->image) }}" alt="Blog Post illustration"
-                 class="rounded">
+                 class="rounded w-full">
         </div>
 
         <div class="mt-6 flex flex-col justify-between flex-1">

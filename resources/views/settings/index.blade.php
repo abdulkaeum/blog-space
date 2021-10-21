@@ -6,7 +6,7 @@
                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                     <th class="py-3 px-6">Title</th>
                     <th class="py-3 px-6">Author</th>
-                    <th class="py-3 px-6">Updated</th>
+                    <th class="py-3 px-6">Status</th>
                     <th class="py-3 px-6">Action</th>
                 </tr>
                 </thead>
@@ -20,11 +20,14 @@
                                 {!! \Illuminate\Support\Str::substr($post->title, 0, 25) !!}...
                             </a>
                         </td>
-                        <td class="py-3 px-6">
+                        <td class="py-3 px-6 text-center">
                             {{ $post->author->name }}
                         </td>
-                        <td class="py-3 px-6">
-                            {{ $post->updated_at->format('M Y') }}
+                        <td class="py-3 px-6 text-center">
+                            <span
+                                class="{{ $post->status == 'live' ? 'bg-green-200 text-green-600' : 'bg-red-200 text-red-600' }} py-1 px-3 rounded-full text-xs">
+                                {{ ucwords($post->status) }}
+                            </span>
                         </td>
                         <td class="py-3 px-6 text-center">
                             <form action="{{ route('settings.post.destroy', $post) }}" method="POST">

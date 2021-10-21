@@ -11,7 +11,7 @@ class TagController extends Controller
     public function index(Tag $tag)
     {
         return view('posts.index', [
-            'posts' => new Paginator($tag->posts->sortByDesc('created_at'), 10)
+            'posts' => new Paginator($tag->posts->where('status','live')->sortByDesc('created_at'), 10)
         ]);
     }
 }

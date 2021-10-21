@@ -21,12 +21,12 @@ class PostController extends Controller
 
         return view('posts.show', [
             'post' => $post->load(['tags']),
-            'relatedPosts' => Post::whereHas('tags', fn($query) =>
-                $query->whereIn('tags.id', $post->tags->pluck('id')))
-                    ->where('posts.id', '!=', $post->id)
-                    ->orderByDesc('created_at')
-                    ->take(4)
-                    ->get()
+            'relatedPosts' => Post::whereHas('tags', fn($query) => $query->whereIn('tags.id', $post->tags->pluck('id')))
+                ->where('posts.id', '!=', $post->id)
+                ->where('status', 'live')
+                ->orderByDesc('created_at')
+                ->take(4)
+                ->get()
         ]);
     }
 
@@ -42,7 +42,8 @@ class PostController extends Controller
     {
         return Post::latest()
             ->filter(request(['search']))
-            ->with(['tags','author'])
+            ->where('status', 'live')
+            ->with(['tags', 'author'])
             ->paginate(10);
     }
 }
