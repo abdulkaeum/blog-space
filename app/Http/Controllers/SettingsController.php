@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -23,7 +23,8 @@ class SettingsController extends Controller
     public function create()
     {
         return view('settings.create', [
-            'tags' => $this->getTags()
+            'tags' => $this->getTags(),
+            'users' => $this->getAuthors()
         ]);
     }
 
@@ -35,15 +36,15 @@ class SettingsController extends Controller
             'body'      => ['required', 'min:5'],
             'thumbnail' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg'],
             'tags'      => ['required', Rule::exists('tags','id')],
-            'status'    => ['required', Rule::in('live','draft')]
+            'status'    => ['required', Rule::in('live','draft')],
+            'author'    => ['required', Rule::exists('users', 'id')]
         ]);
 
         $attributes['slug'] = Str::slug($attributes['title']);
         $attributes['image'] = Str::slug($attributes['title']);
+        $attributes['user_id'] = $attributes['author'];
 
-        $post = auth()->user()->posts()->create(
-            Arr::except($attributes, ['tags','thumbnail'])
-        );
+        $post = Post::create(Arr::except($attributes, ['tags','thumbnail']));
 
         $post->tags()->attach($attributes['tags']);
 
@@ -58,7 +59,8 @@ class SettingsController extends Controller
         return view('settings.edit', [
             'post' => $post,
             'tags' => $this->getTags(),
-            'postTags' => $post->tags->pluck('id')->toArray()
+            'postTags' => $post->tags->pluck('id')->toArray(),
+            'users' => $this->getAuthors()
         ]);
     }
 
@@ -70,10 +72,12 @@ class SettingsController extends Controller
             'body'      => ['required', 'min:5'],
             'thumbnail' => ['image', 'mimes:jpg,png,jpeg,gif,svg'],
             'tags'      => ['required', Rule::exists('tags','id')],
-            'status'    => ['required', Rule::in('live','draft')]
+            'status'    => ['required', Rule::in('live','draft')],
+            'author'    => ['required', Rule::exists('users', 'id')]
         ]);
 
         $attributes['slug'] = Str::slug($attributes['title']);
+        $attributes['user_id'] = $attributes['author'];
 
         $post->update($attributes);
 
@@ -98,5 +102,10 @@ class SettingsController extends Controller
     public function getTags()
     {
         return Tag::all()->sortBy('name');
+    }
+
+    public function getAuthors()
+    {
+        return User::select('name','id')->get();
     }
 }

@@ -24,7 +24,9 @@
         <x-layout.heading-h6>Tags</x-layout.heading-h6>
         <x-forms.input-checkbox name="tags" :options="$tags" :dbData="$postTags"/>
 
-        <x-forms.input-select name="status" :options="['live','draft']" :dbData="$post->status"/>
+        <x-forms.input-select name="status" :options="['live','draft']" :dbData="$post->status" required/>
+
+        <x-forms.input-select name="author" :options="$users" :dbData="$post->user_id" required/>
 
         <x-forms.submit>Update</x-forms.submit>
     </form>
