@@ -3,10 +3,16 @@
         @if($posts->count() > 0)
 
             <x-layout.heading-h2>
-                Latest Post
-                @if(Request::route()->getName() == 'posts.tag')
-                    : {{ ucwords(Route::current()->parameter('tag')->name) }}
+                @if(Request::route()->getName() == 'bookmark.index')
+                    My bookmarks
+                @else
+                    Latest Post
+                    @if(Request::route()->getName() == 'posts.tag')
+                        : {{ ucwords(Route::current()->parameter('tag')->name) }}
+                    @endif
                 @endif
+
+
 
                 {{ isset($searchString) ? ': '.$searchString : '' }}
             </x-layout.heading-h2>

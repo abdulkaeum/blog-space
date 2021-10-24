@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BestCommentController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostController;
@@ -44,6 +45,9 @@ Route::middleware('auth')->group(function (){
     Route::post('post/{post}/comment', [CommentController::class, 'store'])->name('comment.store');
 
     Route::post('best-comment/{comment}', [BestCommentController::class, 'store'])->name('best-comment');
+
+    Route::get('bookmarks', [BookmarkController::class, 'index'])->name('bookmark.index');
+    Route::post('bookmark/{post:slug}',[BookmarkController::class, 'store'])->name('bookmark.store');
 
     Route::middleware('can:admin')->group(function (){
         Route::get('settings/posts', [SettingsController::class, 'index'])->name('settings.index');

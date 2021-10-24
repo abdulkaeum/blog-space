@@ -2,6 +2,29 @@
     <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
         <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
             <div class="col-span-4 lg:text-center lg:pt-14 mb-10 border-r border-t pr-5">
+                <div class="mb-5">
+                    @auth
+                        <form action="{{ route('bookmark.store', $post) }}" method="POST">
+                            @csrf
+                            <x-forms.submit>
+                                <i class="far fa-bookmark fa-lg mr-2"></i>
+                                <span>
+                                @if(auth()->user()->bookmarks->where('id', $post->id)->count())
+                                        Un-Bookmark
+                                    @else
+                                        Bookmark
+                                    @endif
+                            </span>
+                            </x-forms.submit>
+                        </form>
+
+                    @else
+                        <a href="{{ route('login.create') }}">
+                            <span><i class="far fa-bookmark fa-lg mr-2"></i></span> Bookmark
+                        </a>
+                    @endauth
+                </div>
+
                 <img src="{{ asset('storage/'.$post->image) }}" alt="" class="rounded">
 
                 <p class="mt-4 block text-gray-400 text-xs">
@@ -20,7 +43,7 @@
                 </div>
 
                 <div class="mt-10">
-                    <span class="text-xs">Did you love this post?</span>
+                    <span class="text-xs">Did you  this post?</span>
                     <ul class="flex justify-center mb-5">
                         @for($i = 1; $i <= 5; $i++)
                             <li>
@@ -54,7 +77,7 @@
                             <div class="text-left text-sm">{{ $relatedPost->title }}</div>
                             <div>
                                 <img width="140" height="140" class="rounded"
-                                      src="{{ asset('storage/'.$relatedPost->image) }}" alt="{{ $relatedPost->title }}"
+                                     src="{{ asset('storage/'.$relatedPost->image) }}" alt="{{ $relatedPost->title }}"
                                 >
                             </div>
                         </div>
