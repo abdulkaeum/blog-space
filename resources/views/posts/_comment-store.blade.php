@@ -2,7 +2,7 @@
     <form action="{{ route('comment.store', $post->id) }}" method="POST">
         @csrf
         <div class="flex items-center">
-            <img src="https://i.pravatar.cc/60?u={{ auth()->id() }}"
+            <img src="{{ !is_null($profile->image) ? asset('storage/'.$profile->image) : asset('images/avatar.jfif') }}"
                  alt=""
                  width="50"
                  height="50"

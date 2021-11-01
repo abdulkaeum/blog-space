@@ -18,6 +18,11 @@
                     <span class="pb-1 md:pb-0 text-sm {{ Request::routeIs('settings.post.create') ? 'text-gray-900 font-bold' : '' }}">New Blog</span>
                 </a>
             </li>
+            <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                <a href="{{ route('profile.edit', auth()->user()->profile->id) }}" class="block pl-4 align-middle text-gray-700 no-underline hover:text-blue-500 border-l-4 border-transparent {{ Request::routeIs('profile.edit') ? 'lg:border-purple-500 lg:hover:border-purple-500' : 'lg:hover:border-gray-400' }}">
+                    <span class="pb-1 md:pb-0 text-sm {{ Request::routeIs('profile.edit') ? 'text-gray-900 font-bold' : '' }}">Edit Profile</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BestCommentController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostRateController;
@@ -30,6 +31,7 @@ Route::get('posts/{tag:slug}', [TagController::class, 'index'])->name('posts.tag
 Route::post('search', [PostController::class, 'search'])->name('post.search');
 Route::get('rate-post/{post}/{star}', [PostRateController::class, 'store'])->name('rate-post');
 Route::post('newsletter', [NewsletterController::class, 'store'])->name('newsletter');
+Route::get('profile/{user}', [UserController::class, 'index'])->name('profile.index');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'create'])->name('login.create');
@@ -39,11 +41,14 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function (){
-    Route::get('profile', [UserController::class, 'index'])->name('profile.index');
+    Route::post('follow/{user}', [FollowController::class, 'store'])->name('follow.store');
+
+    Route::get('profile/{profile}/edit', [UserController::class, 'edit'])->name('profile.edit');
+    Route::patch('profile/{profile}', [UserController::class, 'update'])->name('profile.update');
+
     Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
 
     Route::post('post/{post}/comment', [CommentController::class, 'store'])->name('comment.store');
-
     Route::post('best-comment/{comment}', [BestCommentController::class, 'store'])->name('best-comment');
 
     Route::get('bookmarks', [BookmarkController::class, 'index'])->name('bookmark.index');

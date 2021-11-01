@@ -48,6 +48,22 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user){
+            $user->profile()->create([
+                'username' => $user->name
+            ]);
+        });
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -61,5 +77,10 @@ class User extends Authenticatable
     public function bookmarks()
     {
         return $this->belongsToMany(Post::class, 'post_user', 'user_id', 'post_id')->withTimestamps();
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(Profile::class);
     }
 }

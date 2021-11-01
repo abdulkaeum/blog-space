@@ -20,6 +20,7 @@ class PostController extends Controller
         $post->save();
 
         return view('posts.show', [
+            'profile' => auth()->user()->profile,
             'post' => $post->load(['tags']),
             'relatedPosts' => Post::whereHas('tags', fn($query) => $query->whereIn('tags.id', $post->tags->pluck('id')))
                 ->where('posts.id', '!=', $post->id)

@@ -19,7 +19,7 @@
 
         <x-layout.hr/>
 
-        <a href="{{ route('profile.index') }}"
+        <a href="{{ route('profile.index', auth()->user()->id) }}"
            class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
             <svg class="w-5 h-5 mx-1" viewBox="0 0 24 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">

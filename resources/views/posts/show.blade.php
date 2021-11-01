@@ -33,11 +33,11 @@
                 </p>
 
                 <div class="flex items-center lg:justify-center text-sm mt-4">
-                    <img src="https://i.pravatar.cc/60?u={{ $post->user_id }}" alt="" class="rounded" width="35"
+                    <img src="{{ !is_null($profile->image) ? asset('storage/'.$profile->image) : asset('images/avatar.jfif') }}" alt="" class="rounded" width="35"
                          height="35">
                     <div class="ml-3 text-left">
                         <h5 class="font-bold">
-                            <a href="#">{{ $post->author->name }}</a>
+                            <a href="{{ route('profile.index', $post->user_id) }}">{{ $post->author->name }}</a>
                         </h5>
                     </div>
                 </div>

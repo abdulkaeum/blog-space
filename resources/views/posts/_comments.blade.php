@@ -3,7 +3,7 @@
         <article class="flex space-x-3">
             <div class="flex-shrink-0">
                 <img
-                    src="https://i.pravatar.cc/60?u={{ $comment->user_id }}"
+                    src="{{ !is_null($profile->image) ? asset('storage/'.$profile->image) : asset('images/avatar.jfif') }}"
                     alt=""
                     width="35"
                     height="35"
