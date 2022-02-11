@@ -33,24 +33,34 @@ I always wanted to learn about space and astronomy, so I thought why not start w
 
 #### Screenshots
 - Home
-<img alt="" width="500" src="public/app-screenshots/home.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/home.png">
+
 - Register
-<img alt="" width="500" src="public/app-screenshots/register.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/register.png">
+
 - Login
-<img alt="" width="500" src="public/app-screenshots/login.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/login.png">
+
 - Admin view all posts
-<img alt="" width="500" src="public/app-screenshots/posts.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/posts.png">
+
 - Create a new post
-<img alt="" width="500" src="public/app-screenshots/new-post.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/new-post.png">
+
 - Edit a post
-<img alt="" width="500" src="public/app-screenshots/post-edit.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/post-edit.png">
+
 - Single post
-<img alt="" width="500" src="public/app-screenshots/post.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/post.png">
+
 - Profile
-<img alt="" width="500" src="public/app-screenshots/profile.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/profile.png">
+
 - Profile edit
-<img alt="" width="500" src="public/app-screenshots/profile-edit.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/profile-edit.png">
+
 - Subscribe to newsletter
-<img alt="" width="500" src="public/app-screenshots/subscribe.PNG">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/subscribe.PNG">
+
 - Subscription service uses Mailchimp
-<img alt="" width="500" src="public/app-screenshots/mailchimp.png">
+<img alt="" style="max-width: 800px; width: 100%;" src="public/app-screenshots/mailchimp.png">
